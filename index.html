@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Portfolio Design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="ds.css">
+<style>
+  /* Overview: what's live and where it's built from, the numbers from HUB.facts, and where to go next. */
+  .hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1.5rem 2rem;align-items:end}
+  .live{background:var(--color-primary);color:var(--color-primary-text);border-radius:var(--radius-lg);padding:.875rem 1.125rem;min-width:13rem;display:flex;flex-direction:column;gap:.25rem}
+  .live b{font:600 1.5rem/1.1 var(--font-display);letter-spacing:-.02em}
+  .live>span{font-size:.8125rem;opacity:.85}
+  .live a{color:inherit;font-size:.8125rem;font-weight:600}
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(9.5rem,1fr));gap:.625rem}
+  .tile b{font:600 1.75rem/1 var(--font-display);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+  .tile span{font-size:.8125rem;color:var(--color-text-muted)}
+  .go{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem}
+  .go a{text-decoration:none;color:inherit}
+  .go a:hover{border-color:var(--color-border-strong)}
+  .go small{color:var(--color-text-muted);font-size:.8125rem}
+  @media (max-width:760px){.hero{grid-template-columns:1fr}.go{grid-template-columns:1fr}}
+</style>
+<script src="hub.config.js"></script>
+<script src="nav.js" defer></script>
+</head>
+<body>
+<main class="wrap">
+  <header class="hero">
+    <div>
+      <span class="eyebrow">Updated <span data-fact="updated"></span></span>
+      <h1>Allen Kang's portfolio, and everything around it</h1>
+      <p class="lede">A Next.js site of case studies, working demos and tailored pages for applications, published as a static copy at mooque-dev.github.io so bank and ATS networks can open it. This hub keeps what's live, what's waiting on a decision, and the next tickets in one place.</p>
+    </div>
+    <div class="live" id="live-box">
+      <span>Live site, built from <span data-fact="branch"></span></span>
+      <b><span data-fact="site.live"></span></b>
+      <span>Commit <span data-fact="site.commit"></span>, up to date</span>
+      <a href="#" data-fact-href="live">mooque-dev.github.io ↗</a>
+    </div>
+  </header>
+
+  <div class="tiles" id="tiles" aria-label="At a glance"></div>
+
+  <section aria-labelledby="h-go" id="start">
+    <div class="head"><h2 id="h-go">Where to go</h2>
+      <p>The two pages of this hub first, then the real thing. Links marked ↗ open the live site or a document.</p></div>
+    <div class="go">
+      <a class="card" href="plan.html" id="go-plan"><b>Plan</b><small>Seven decisions waiting on Allen, where each area stands, and the design log.</small></a>
+      <a class="card" href="project.html" id="go-project"><b>Project</b><small>Every page and case with its state, and ten tickets with a recommendation each.</small></a>
+      <a class="card" href="https://claude.ai/artifact/7YF6R9iLauKmqMzJSGvZuu" target="_blank" rel="noopener" id="go-audit"><b>Audit report ↗</b><small>The October 13 audit: fixes, strengths, risks, what to do next.</small></a>
+      <a class="card" href="https://mooque-dev.github.io/mastercard/" target="_blank" rel="noopener" id="go-mastercard"><b>Mastercard page ↗</b><small>The card, the two circles, five cases. Hidden from search.</small></a>
+      <a class="card" href="https://mooque-dev.github.io/float/" target="_blank" rel="noopener" id="go-float"><b>Float page ↗</b><small>For Float's Banking and Growth roles, with its own floating card.</small></a>
+      <a class="card" href="https://mooque-dev.github.io/aircanada/" target="_blank" rel="noopener" id="go-aircanada"><b>Air Canada page ↗</b><small>The same work framed for a Product Manager role.</small></a>
+      <a class="card" href="https://claude.ai/artifact/6CRe38UZ5gehQfcHuu1tbh" target="_blank" rel="noopener" id="go-deck"><b>Walkthrough deck ↗</b><small>33 slides for the Mastercard conversation: 0 to 1, ambiguity, the fee decision.</small></a>
+      <a class="card" href="https://claude.ai/artifact/Q84GRCF67JZNgirV8U1HSX" target="_blank" rel="noopener" id="go-todo"><b>Allen's to-do list ↗</b><small>LinkedIn copy, the deck rehearsal, and other things only Allen can do.</small></a>
+      <a class="card" href="#" data-fact-href="repo" id="go-repo"><b>Repository ↗</b><small>portfolio-2026 on GitHub. The v2 branch is the live one.</small></a>
+    </div>
+  </section>
+
+  <footer>Status facts come from <code>hub.config.js</code>, so every page shows the same. Links to claude.ai documents open only for Allen and people he shares them with.</footer>
+</main>
+<script>
+(() => {
+  const F = window.HUB.facts, C = F.counts;
+  document.querySelectorAll("[data-fact-href]").forEach((a) => { a.href = F[a.dataset.factHref]; a.target = "_blank"; a.rel = "noopener"; });
+  // Tiles: one number each, read from the facts.
+  const tiles = [[C.cases, "case studies on the site"], [C.work, "professional cases"], [C.demos, "working demos inside cases"], [C.liveApps, "live apps linked"], [C.tailored, "tailored pages (Mastercard, Float, Air Canada)"], [C.resumes, "résumé PDFs, all one page"]];
+  document.getElementById("tiles").innerHTML = tiles.map(([n, label]) => `<div class="card tile"><b>${n}</b><span>${label}</span></div>`).join("");
+})();
+</script>
+</body>
+</html>

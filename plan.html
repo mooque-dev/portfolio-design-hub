@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Portfolio Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="ds.css">
+<style>
+  /* Plan: decisions first (each unblocks a ticket), then where each area stands, then a dated design log. */
+  .d em{font-style:normal;font-size:.8125rem;font-weight:600;color:var(--color-warning)}
+  .d span{font-size:.875rem;color:var(--color-text-muted)}
+  .log{list-style:none;margin:0;padding:0}
+  .log>li{display:grid;grid-template-columns:6rem 1fr;gap:1rem;padding:.75rem 0;border-top:1px solid var(--color-border);font-size:.9375rem}
+  .log>li:first-child{border-top:0}
+  .log time{font:600 .9375rem/1.4 var(--font-display)}
+  .log ul{margin:0;padding-left:1.125rem;display:flex;flex-direction:column;gap:.25rem}
+  @media (max-width:560px){.log>li{grid-template-columns:1fr;gap:.25rem}}
+</style>
+<script src="hub.config.js"></script>
+<script src="nav.js" defer></script>
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <span class="eyebrow">Plan · updated <span data-fact="updated"></span></span>
+    <h1>What's next, and what's waiting on Allen</h1>
+    <p class="lede">Seven decisions only Allen can make. Each says what it unblocks and links to the ticket or page it's about.</p>
+  </header>
+
+  <section aria-labelledby="h-dec" id="decide">
+    <div class="head"><h2 id="h-dec">Decisions waiting</h2>
+      <p>The first two matter most for applications; the rest are small facts to confirm.</p></div>
+    <div class="cards">
+      <div class="card d" id="d-oldsite"><em>Before sending more links</em><b>What should allenkang.com be?</b><span>It still shows the October 8 version. Update it to match (recommended), redirect it to the github.io copy, or leave it. <a href="project.html#t2">Ticket T2</a>.</span></div>
+      <div class="card d" id="d-counter"><em>This week</em><b>OK to add a visit counter?</b><span>A free, cookie-free GoatCounter account in Allen's name would show when /mastercard and /float are opened. <a href="project.html#t1">Ticket T1</a>.</span></div>
+      <div class="card d" id="d-hub"><em>Before publishing this hub</em><b>Where should this hub live?</b><span>The portfolio repo is public, so committing the hub there makes these notes public. Options: keep it local, or publish it to its own repo. <a href="project.html#t10">Ticket T10</a>.</span></div>
+      <div class="card d" id="d-seoul"><em>Small fact</em><b>Born in Seoul?</b><span>The About page says "Born in Seoul", based on the Seoul clock there. <a href="https://mooque-dev.github.io/about/" target="_blank" rel="noopener">About ↗</a></span></div>
+      <div class="card d" id="d-mentor"><em>Small fact</em><b>Three designers mentored, or two?</b><span>The résumé says two at Aplos and one at Keela; the home receipt adds them to three. If one person counts twice, it's two. <a href="https://mooque-dev.github.io/resume/" target="_blank" rel="noopener">Résumé ↗</a></span></div>
+      <div class="card d" id="d-automation"><em>Small fact</em><b>Automation: four months or five?</b><span>The case says "about 4 months"; the Mastercard page and the deck say five. <a href="https://mooque-dev.github.io/work/automation-nonprofits/" target="_blank" rel="noopener">Case ↗</a></span></div>
+      <div class="card d" id="d-birthyear"><em>Small fact</em><b>Is the birth year OK to show?</b><span>1994 appears on the About page and as the card number on /mastercard and /float.</span></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-state" id="state">
+    <div class="head"><h2 id="h-state">Where each area stands</h2></div>
+    <div class="tw" tabindex="0" aria-label="Where each area stands, scrolls sideways"><table class="t">
+      <thead><tr><th scope="col">Area</th><th scope="col">State</th><th scope="col">Status</th></tr></thead>
+      <tbody>
+        <tr><td><b>github.io copy</b></td><td>Live since <span data-fact="site.live"></span>, built from <span data-fact="branch"></span> at <span data-fact="site.commit"></span>. Shared links preview on this address.</td><td><span class="pill ok">Current</span></td></tr>
+        <tr><td><b>Home page</b></td><td>Audience switcher (anyone, recruiters, design leads, PMs, engineers), edge-to-edge work wall with Interactive and Live app tags.</td><td><span class="pill ok">Live</span></td></tr>
+        <tr><td><b>Professional cases</b></td><td>Eight cases. Four have something to try; Aplos × Keela and Orchid are text and screenshots only.</td><td><span class="pill warn">Uneven</span></td></tr>
+        <tr><td><b>Tailored pages</b></td><td>/mastercard, /float and /aircanada, each short, each hidden from search.</td><td><span class="pill ok">Live</span></td></tr>
+        <tr><td><b>Résumés</b></td><td>General, Mastercard and PM PDFs, one page each. Facts match the site.</td><td><span class="pill ok">Current</span></td></tr>
+        <tr><td><b>allenkang.com</b></td><td>Serves main, last updated <span data-fact="old.last"></span>. Old look, no tailored pages, no demos.</td><td><span class="pill warn">Behind</span></td></tr>
+        <tr><td><b>Visit tracking</b></td><td>None. There's no way to tell whether a link was opened.</td><td><span class="pill bad">Missing</span></td></tr>
+        <tr><td><b>Repo docs</b></td><td>docs/STATUS.md was last updated Aug 17. CLAUDE.md still says Fee Opt-In visuals stay blurred and that production is allenkang.com.</td><td><span class="pill warn">Out of date</span></td></tr>
+        <tr><td><b>Design hub</b></td><td>Set up Oct 18 in design/hub, not committed or published yet.</td><td><span class="pill mute">Local</span></td></tr>
+      </tbody></table></div>
+  </section>
+
+  <section aria-labelledby="h-log" id="log">
+    <div class="head"><h2 id="h-log">Design log</h2><p>Newest first, from the commit history.</p></div>
+    <ol class="log">
+      <li id="log-1018"><time>Oct 18</time><ul><li>Set up this design hub.</li></ul></li>
+      <li id="log-1013b"><time>Oct 13, pm</time><ul><li>Added /float for Float's Banking and Growth roles, with its own floating card.</li><li>Red-pen notes now mark phrases with a marker swipe instead of a circle.</li><li>A line under each card explains the card number and links to the four years on About.</li></ul></li>
+      <li id="log-1013a"><time>Oct 13, am</time><ul><li>Audit fixes: link previews on the github.io address, sentence-case labels, a redrawn preview image.</li><li>Mastercard page cut to three parts: the card, the two circles, five cases.</li><li>Fee Opt-In unblurred and opened to everyone; its checkout rebuilt from the MagicPatterns prototype.</li><li>Demos made visible everywhere: hero buttons, Interactive and Live app tags, try bars.</li></ul></li>
+      <li id="log-1012"><time>Oct 12</time><ul><li>New visual direction: one typeface, plain black and white, a work wall. Experience reads eight years, five in payments.</li><li>Mastercard page and résumé, Keela Contacts shipped screens.</li></ul></li>
+      <li id="log-1010"><time>Oct 10</time><ul><li>Cancer Care case rebuilt: one patient first, a dot per patient, the cancer conference explained.</li></ul></li>
+      <li id="log-1009"><time>Oct 9</time><ul><li>/aircanada and a PM résumé for a Product Manager role.</li></ul></li>
+      <li id="log-1008"><time>Oct 8</time><ul><li>Last update to main, which allenkang.com still serves.</li></ul></li>
+    </ol>
+  </section>
+</main>
+</body>
+</html>
